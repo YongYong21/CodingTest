@@ -1,10 +1,13 @@
+
 function solution(s) {
-    const arr = [[0,'zero'], [1,'one'], [2,'two'], [3,'three'], [4,'four'], [5,'five'], [6,'six'], [7,'seven'], [8,'eight'], [9,'nine']]
-    arr.forEach(list=> {
-        const reg = new RegExp(list[1], 'g')
-        s = s.replace(reg, list[0])
-    })
-    
-    return Number(s)
-    
+    let numbers = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
+    var answer = s;
+
+    for(let i=0; i< numbers.length; i++) {
+        let arr = answer.split(numbers[i]);
+        console.log(arr)
+        answer = arr.join(i);
+    }
+
+    return Number(answer);
 }
