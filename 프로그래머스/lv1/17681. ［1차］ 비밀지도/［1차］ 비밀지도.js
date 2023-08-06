@@ -1,38 +1,9 @@
 function solution(n, arr1, arr2) {
-    const map = []
-    
-    let arr1Binary =[] 
-    
-    arr1.forEach(v => {
-        v = v.toString(2)
-        for(; v.length<n;){
-            v = 0 + v.toString(2)
-        }
-        arr1Binary.push(v)
-    })
-    
-    let arr2Binary =[] 
-    arr2.forEach(v=>{
-        v = v.toString(2)
-        for(; v.length<n;){
-            v = 0 + v.toString(2)
-        }
-        arr2Binary.push(v)
-    })
-    
-    
-    for(let a=0;a < n; a++){
-        let str =''
-        for(let b=0; b < n; b++){
-            if(arr1Binary[a][b] == 0 && arr2Binary[a][b] == 0){
-                str += ' '
-            }
-            else {
-                str += '#'
-            }
-        }
-        map.push(str)
-    }
-    return map
-    
+  const map = [];
+  for (let i = 0; i < n; i++) {
+    const binaryMap = (arr1[i] | arr2[i]).toString(2).padStart(n, '0');
+    const row = binaryMap.replace(/0/g, ' ').replace(/1/g, '#');
+    map.push(row);
+  }
+  return map;
 }
