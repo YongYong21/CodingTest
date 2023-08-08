@@ -1,19 +1,19 @@
 function solution(s) {
-    let answer = []
+    const charIndexMap = new Map(); 
+    const answer = [];
 
-    for(let i = 0; i < s.length; i++){
-        if(s.slice(0,i).includes(s[i])){
-            let idx
-            s.slice(0,i).split('').forEach((v,index) => {
-                if( v === s[i]){
-                    idx = index
-                }
-            })
-            answer.push(i-idx)
+    for (let i = 0; i < s.length; i++) {
+        const char = s[i];
+        
+        if (charIndexMap.has(char)) {
+            const lastIndex = charIndexMap.get(char);
+            answer.push(i - lastIndex);
+        } else {
+            answer.push(-1);
         }
-        else {
-            answer.push(-1)
-        }
+
+        charIndexMap.set(char, i); 
     }
-    return(answer)
+    console.log(charIndexMap)
+    return answer;
 }
