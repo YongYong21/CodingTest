@@ -1,10 +1,14 @@
 function solution(k, m, score) {
-    let answer = 0;
-    const scoreConst = score.sort(function(a, b){return b - a});
-
-    for (let i = m-1 ; i < scoreConst.length ; i += m) {
-        answer += scoreConst[i] * m;
+    let box = parseInt(score.length/m)
+    let last = m - 1;
+    let sum = 0;
+    score.sort((a,b)=>a-b).reverse()
+    for(;box!==0;box--){
+        sum += score[last] * m   
+        last += m 
     }
-
-    return answer;
+    
+    return sum
+    
+    
 }
